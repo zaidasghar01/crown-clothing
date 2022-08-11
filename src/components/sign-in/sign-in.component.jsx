@@ -4,7 +4,6 @@ import Button from "../button/button.component";
 import "./sign-in.styles.scss";
 
 import {
-  createAuthUser,
   createUserDocument,
   signInWithGooglePopup,
   signInWithEmail,
@@ -18,7 +17,6 @@ const defaultFormFields = {
 const SignIn = () => {
   const [formFields, setformFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  console.log(formFields);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -32,8 +30,8 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInWithEmail(email, password);
-      console.log(response);
+      const { user } = await signInWithEmail(email, password);
+      resetFields();
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
@@ -49,8 +47,7 @@ const SignIn = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocument(user);
+    await signInWithGooglePopup();
   };
 
   return (
