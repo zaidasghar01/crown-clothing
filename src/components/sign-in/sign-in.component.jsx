@@ -4,7 +4,6 @@ import Button from "../button/button.component";
 import "./sign-in.styles.scss";
 
 import {
-  createUserDocument,
   signInWithGooglePopup,
   signInWithEmail,
 } from "../../utils/firebase/firebase.utils";
@@ -30,7 +29,7 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { user } = await signInWithEmail(email, password);
+      await signInWithEmail(email, password);
       resetFields();
     } catch (error) {
       switch (error.code) {
