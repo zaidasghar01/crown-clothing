@@ -1,21 +1,28 @@
+import { useNavigate } from "react-router-dom";
+
 import React from "react";
 import "./catogry-item.styles.scss";
 
-const card = ({ catogry }) => {
+const Card = ({ catogry }) => {
+  const { imageUrl, title, route } = catogry;
+  const navigate = useNavigate();
+  const onChangeNavigation = () => {
+    navigate(route);
+  };
   return (
-    <div className="catogry-container">
+    <div className="catogry-container" onClick={onChangeNavigation}>
       <div
         className="background-image"
         style={{
-          backgroundImage: `url(${catogry.imageUrl})`,
+          backgroundImage: `url(${imageUrl})`,
         }}
       />
       <div className="catogry-body-container">
-        <h2>{catogry.title}</h2>
+        <h2>{title}</h2>
         <p>Shop Now</p>
       </div>
     </div>
   );
 };
 
-export default card;
+export default Card;
