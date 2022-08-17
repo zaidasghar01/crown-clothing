@@ -3,7 +3,7 @@ import "./footer.styles.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      <span>This website is developed by muhammad zaid</span>
+      <span>This website is developed by Muhammad Zaid</span>
     </div>
   );
 };
