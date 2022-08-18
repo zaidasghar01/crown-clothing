@@ -9,6 +9,8 @@ import Shop from "./routes/shop/shop";
 import Contact from "./routes/contact/contact.component";
 import Checkout from "./routes/checkout/checkout.component";
 import { checkUserSession } from "./store/user/user.action";
+import ProtectedRoutes from "./components/Protected-routes";
+import DefaultRoute from "./components/DefaultRoute";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,9 +22,13 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
-        <Route path="shop/*" element={<Shop />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="shop/*" element={<Shop />} />
+        </Route>
         <Route path="contact" element={<Contact />} />
-        <Route path="sign-in" element={<SignIn />} />
+        <Route element={<DefaultRoute />}>
+          <Route path="sign-in" element={<SignIn />} />
+        </Route>
         <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>

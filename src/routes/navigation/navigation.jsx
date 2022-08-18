@@ -33,7 +33,7 @@ const Navigation = () => {
             Contact
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <span className="nav-link" onClick={signOutUser} to="/">
               Sign Out
             </span>
           ) : (
