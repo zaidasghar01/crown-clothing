@@ -19,7 +19,7 @@ const CheckoutItem = ({ cartItem }) => {
   const addItemToCartHandler = () => {
     return dispatch(addItemToCart(cartItems, cartItem));
   };
-  const removeItemsToHandler = () => {
+  const removeItemsToCartHandler = () => {
     return dispatch(removeItemsFromCart(cartItems, cartItem));
   };
   const { name, quantity, imageUrl, price } = cartItem;
@@ -31,7 +31,7 @@ const CheckoutItem = ({ cartItem }) => {
       <span className="name">{name}</span>
 
       <span className="quantity">
-        <div className="arrow" onClick={removeItemsToHandler}>
+        <div className="arrow" onClick={removeItemsToCartHandler}>
           &#10094;
         </div>
         <span className="value">{quantity}</span>
